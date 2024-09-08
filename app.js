@@ -6,6 +6,9 @@ const expressLayout = require('express-ejs-layouts')
 const app = express();
 const PORT = 5000 || process.env.PORT;
 
+// Middlewares:
+app.use(express.static('public'));
+
 // Rendering using template layout(EJS)
 app.use(expressLayout);
 app.set('layout', './layouts/main');
@@ -13,6 +16,7 @@ app.set('view engine', 'ejs');
 
 // For routing
 app.use('/', require('./server/routes/main'));
+
 
 app.listen(PORT, ()=> {
     console.log(`Listening on port ${PORT}`);
